@@ -32,8 +32,8 @@
 
 | ID  | Issue Description                        | Identified By | Fixed By     |
 |-----|------------------------------------------|---------------|--------------|
-| 1   | Style.css is not filled                                    |         Narain |     Whole Team     |
-| 2   |                                          |               |              |
+| 1   | Style.css is not filled                  |         Narain |     Whole Team     |
+| 2   | Navigation issue                         |Sree Chandana  |Sree Chandana |              
 | 3   |                                          |               |              |
 | 4   |                                          |               |              |
 | 5   |                                          |               |              |
