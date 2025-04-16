@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:8000";
+const baseURL = "http://localhost:8000";
 
 let score = 0;
 let highScore = 0;
@@ -13,7 +13,7 @@ const feedback = document.getElementById("feedback");
 const resetBtn = document.getElementById("resetBtn");
 const attemptList = document.getElementById("attemptList");
 const attemptCount = document.getElementById("attemptCount");
-const searchInput = document.getElementById("search");
+const searchInput = document.getElementById("quizSearch");
 
 function updateScoreDisplay() {
   scoreDisplay.textContent = `Score: ${score} | High Score: ${highScore}`;
@@ -36,10 +36,11 @@ function updateAttempts() {
 }
 
 searchInput.addEventListener("input", updateAttempts);
-// how is life ?
+
 async function loadHighScore() {
   try {
-    const res = await fetch(`${BASE_URL}/quiz/highscore`);
+    const res = await fetch(`${baseURL}/quiz/highscore`);
+    if (!res.ok) throw new Error("Failed to fetch high score");
     const data = await res.json();
     highScore = data.high_score;
     updateScoreDisplay();
@@ -52,7 +53,8 @@ async function loadQuestion() {
   if (gameOver) return;
 
   try {
-    const res = await fetch(`${BASE_URL}/quiz/question`);
+    const res = await fetch(`${baseURL}/quiz/question`);
+    if (!res.ok) throw new Error("Failed to fetch question");
     const data = await res.json();
     currentQuestion = data;
 
@@ -63,7 +65,7 @@ async function loadQuestion() {
         <input type="radio" name="answer" value="${option}" required>
         ${option}
       </label><br/>
-    `).join("") + `<button type="submit">Submit</button>`;
+    `).join("") + `<button type="submit" aria-label="Submit answer">Submit</button>`;
 
     form.dataset.id = data.id;
     feedback.textContent = "";
@@ -77,18 +79,22 @@ form.addEventListener("submit", async (e) => {
   if (gameOver) return;
 
   const selected = form.querySelector("input[name=answer]:checked");
-  if (!selected) return;
+  if (!selected) {
+    feedback.textContent = "Please select an answer.";
+    return;
+  }
 
   const answer = selected.value;
   const id = parseInt(form.dataset.id);
 
   try {
-    const res = await fetch(`${BASE_URL}/quiz/answer`, {
+    const res = await fetch(`${baseURL}/quiz/answer`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, answer, score })
     });
 
+    if (!res.ok) throw new Error("Failed to submit answer");
     const data = await res.json();
 
     if (data.error) {

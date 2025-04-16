@@ -1,3 +1,4 @@
+const baseURL = "http://localhost:8000";
 const rssConverter = "https://api.rss2json.com/v1/api.json?rss_url=";
 const feeds = [
   { name: "bbc", url: "http://feeds.bbci.co.uk/news/world/rss.xml" },
@@ -11,10 +12,9 @@ async function loadNews(searchTerm = "", source = "all", reset = false) {
   
   if (reset) {
     allArticles = [];
-    list.innerHTML = "";
   }
   
-  loading.style.display = "block";
+  loading.classList.remove("hidden");
   
   try {
     const selectedFeeds = source === "all" ? feeds : feeds.filter(f => f.name === source);
@@ -43,7 +43,6 @@ async function loadNews(searchTerm = "", source = "all", reset = false) {
       : allArticles;
     
     document.getElementById("articleCount").textContent = `Total articles: ${filteredArticles.length}`;
-    // OPINION: Javascript syntax is stupid
     list.innerHTML = "";
     filteredArticles.forEach(article => {
       const div = document.createElement("div");
@@ -58,11 +57,18 @@ async function loadNews(searchTerm = "", source = "all", reset = false) {
     });
     
   } catch (err) {
-    list.innerHTML += `<p style="color: red;">Error: ${err.message}</p>`;
+    list.innerHTML += `<p class="error">Error: ${err.message}</p>`;
   } finally {
-    loading.style.display = "none";
+    loading.classList.add("hidden");
   }
 }
 
+document.getElementById("newsSearch").addEventListener("input", (e) => {
+  loadNews(e.target.value, document.getElementById("source").value, true);
+});
+
+document.getElementById("source").addEventListener("change", (e) => {
+  loadNews(document.getElementById("newsSearch").value, e.target.value, true);
+});
 
 loadNews();

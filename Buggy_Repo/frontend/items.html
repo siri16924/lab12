@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Items</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -14,8 +15,17 @@
     <a href="news.html">News</a>
     <a href="quiz.html">Quiz</a>
   </nav>
-  <!-- fuck I think I deleted a container, god help me-->
-
+  <div class="container">
+    <h1>📋 Items</h1>
+    <p id="itemCount">Total items: 0</p>
+    <input type="text" id="itemSearch" placeholder="Search items..." aria-label="Search items" />
+    <form id="itemForm" aria-label="Add new item">
+      <input type="text" id="name" placeholder="Item name" required aria-label="Item name" />
+      <input type="text" id="description" placeholder="Description" required aria-label="Item description" />
+      <button type="submit" aria-label="Add item">Add Item</button>
+    </form>
+    <ul id="itemList"></ul>
+  </div>
   <script src="scripts/items.js"></script>
 </body>
 </html>

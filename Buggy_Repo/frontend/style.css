@@ -1,2 +1,70 @@
-Aah I was too lazy to implement this
-You can do it
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  nav {
+    background-color: #333;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  nav a {
+    color: white;
+    margin-right: 15px;
+    text-decoration: none;
+  }
+  nav a:hover {
+    text-decoration: underline;
+  }
+  h1 {
+    color: #333;
+  }
+  form {
+    margin: 20px 0;
+  }
+  input[type="text"], select {
+    padding: 8px;
+    margin: 5px 0;
+    width: 200px;
+  }
+  button {
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #0056b3;
+  }
+  ul, .news-scrollable, .attempt-scrollable {
+    list-style: none;
+    padding: 0;
+  }
+  li, .news-item, .attempt-scrollable div {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  .news-item h3 {
+    margin: 0;
+  }
+  .hidden {
+    display: none;
+  }
+  .loading {
+    color: #333;
+    font-style: italic;
+  }
+  .error {
+    color: red;
+    font-weight: bold;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }

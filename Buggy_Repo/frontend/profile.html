@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Profiles</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -15,18 +16,16 @@
     <a href="quiz.html">Quiz</a>
   </nav>
   <div class="container">
-    <!-- Please suggest some good music, I am tired of my playlist -->
-    <p id="userCounts">Total users: 0</p>
-    <input type="text" id="search" placeholder="Search users..." />
+    <p id="userCount">Total users: 0</p>
+    <input type="text" id="userSearch" placeholder="Search users..." aria-label="Search users" />
     <h1>🧑 User Profiles</h1>
-    <form id="userForm">
-      <input type="text" id="username" placeholder="Username" required />
-      <input type="text" id="bio" placeholder="Bio" required />
-      <button type="submit">Add User</button>
+    <form id="userForm" aria-label="Add new user">
+      <input type="text" id="username" placeholder="Username" required aria-label="Username" />
+      <input type="text" id="bio" placeholder="Bio" required aria-label="User bio" />
+      <button type="submit" aria-label="Add user">Add User</button>
     </form>
     <ul id="userList"></ul>
   </div>
-
-  <script src="styles/profile.js"></script>
+  <script src="scripts/profile.js"></script>
 </body>
 </html>

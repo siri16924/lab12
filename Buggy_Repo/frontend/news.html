@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>News Feed</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -14,18 +15,17 @@
     <a href="news.html">News</a>
     <a href="quiz.html">Quiz</a>
   </nav>
-  <!-- Did I make this code buggy ??? -->
   <div class="container">
     <h1>📰 News Feed</h1>
     <p id="articleCount">Total articles: 0</p>
-    <input type="text" id="search" placeholder="Search news..." />
-    <select id="source">
+    <input type="text" id="newsSearch" placeholder="Search news..." aria-label="Search news" />
+    <select id="source" aria-label="Select news source">
       <option value="all">All Sources</option>
       <option value="bbc">BBC</option>
       <option value="guardian">The Guardian</option>
     </select>
     <div id="newsList" class="news-scrollable"></div>
-    <div id="loading" style="display: none;">Loading...</div>
+    <div id="loading" class="hidden loading">Loading...</div>
   </div>
   <script src="scripts/news.js"></script>
 </body>
